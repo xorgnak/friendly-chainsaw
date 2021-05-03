@@ -27,6 +27,7 @@ class App < Sinatra::Base
 	set :public_folder, "#{Dir.pwd}/public/"
 	end
 	get('/') do
+          Redis.new.publish "GET", JSON.generate(AppHandler.new(request, params).to_h)
           erb :index
 	end
 	post('/') do
