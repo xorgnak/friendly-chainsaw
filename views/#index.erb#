@@ -1,0 +1,42 @@
+<style>
+#bg { width: 100%; height: 100%; z-index: -1; }
+#logo { width: 100%; }
+#doc { z-index: 1; margin: 0; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); height: 80%; }
+#trigger { z-index: 1; position: fixed; background-color: white; border-radius: 50px; padding: 10%;}
+#trigger > * { font-size: x-large; width: 90%; }
+</style>
+<!-- <img id="bg" src="/img_house.jpg"> -->
+<img id="bg" src="/bg.gif">
+<form id="doc" action="/" method="post" style="width: 100%;">
+    <div id="trigger" style="display: none;">
+    <img id="logo" src="/logo.jpg">
+      <input type='hidden' name='seed' value="<%= seed.current %>">
+      <input type='hidden' name='epoch' value="<%= clock.epoch %>">
+      <input type='tel' class='ctc' name='phone' placeholder="phone number" style="display: none;">
+      <input type='text' class='ctc' name='addr' placeholder="street address" style="display: none;">
+      <input id="zip" class='ctc' name="zip" type="text" pattern="[0-9]*" placeholder="zip code" style="display: none;">
+      <button id="ctc" class="ctc" style="background-color: green; display: none;">FREE INSPECTION</button>
+    </div>
+</form>
+<script>
+    $(function() {
+	var bl = false;
+	setTimeout(function() {
+	    $("#trigger").fadeIn(1250);
+	    setTimeout(function() {
+		setTimeout(function() {
+	            $(".ctc").slideDown(1250);
+		    setInterval(function() {
+			bl = !bl;
+			if ( bl === true ) {
+			    $("#ctc").css("color", "white");
+			} else {
+			    $("#ctc").css("color", "black");
+			}
+		    }, 250);
+		}, 500);
+	    }, 1000);
+	}, 1000);
+    });
+</script>
+    
