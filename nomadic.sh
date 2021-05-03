@@ -8,7 +8,7 @@ redis-cli SET COMMIT `git log --format="%h" -n 1`
 if [[ "$USER" == 'root' ]]; then
 	export PORT=80;
 else
-    if [[ ! -z "$PORT" ]]; then
+    if [[ -z "$PORT" ]]; then
 	export PORT=8080;
     fi
 fi
